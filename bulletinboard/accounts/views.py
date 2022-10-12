@@ -55,7 +55,7 @@ def auth_code(request):
     user.code = random.randint(1000, 9999)
     user.save()
     send_mail(
-        subject=f'MMORPG Billboard: подтверждение e-mail',
+        subject=f'Bulletin board: подтверждение e-mail',
         message=f'Доброго дня, {request.user}! Для подтверждения регистрации, введите код {user.code} на '
                 f'странице регистрации\nhttp://127.0.0.1:8000/accounts/profile',
         from_email='ogolovko92@yandex.ru',
