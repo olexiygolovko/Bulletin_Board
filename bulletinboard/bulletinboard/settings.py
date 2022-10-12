@@ -211,9 +211,9 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.ru'  # адрес сервера Яндекс-почты для всех один и тот же
 EMAIL_PORT = 465  # порт smtp сервера тоже одинаковый
-EMAIL_HOST_USER = 'ogolovko92@yandex.ru'
-EMAIL_HOST_PASSWORD = 'SkillGolovko92'  # прячем в .env
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_HOST_USER = 'golovkogolovkoolexiy@yandex.ru'
+EMAIL_HOST_PASSWORD = 'BG7-Wvy-wDa-9CZ'  # прячем в .env
+DEFAULT_FROM_EMAIL = 'golovkogolovkoolexiy'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 

@@ -58,7 +58,7 @@ def auth_code(request):
         subject=f'Bulletin board: подтверждение e-mail',
         message=f'Доброго дня, {request.user}! Для подтверждения регистрации, введите код {user.code} на '
                 f'странице регистрации\nhttp://127.0.0.1:8000/accounts/profile',
-        from_email='ogolovko92@yandex.ru',
+        from_email='golovkogolovkoolexiy@yandex.ru',
         recipient_list=[request.user.email, ],
     )
     return HttpResponseRedirect(reverse('account_profile'))
