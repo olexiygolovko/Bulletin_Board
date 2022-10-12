@@ -27,5 +27,3 @@ class Response(models.Model):
     text = models.TextField(verbose_name='Текст')
     status = models.BooleanField(default=False)
     dateCreation = models.DateTimeField(auto_now_add=True)
-
-

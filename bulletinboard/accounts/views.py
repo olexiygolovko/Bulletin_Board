@@ -7,7 +7,7 @@ from django.urls import reverse
 from django.views.generic import UpdateView, FormView
 from django.shortcuts import get_object_or_404
 from .models import UsersAuth
-from .forms import EditProfile, Auth_codeForm
+from .forms import EditProfile, AuthForm
 import random
 
 
@@ -16,7 +16,7 @@ code_not_correct = str('')
 
 class AccountProfile(LoginRequiredMixin, FormView):
     template_name = 'allauth/account/profile.html'
-    form_class = Auth_codeForm
+    form_class = AuthForm
 
     def dispatch(self, request, *args, **kwargs):
         if UsersAuth.objects.filter(user=self.request.user).exists():
