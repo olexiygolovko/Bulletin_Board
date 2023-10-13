@@ -13,7 +13,7 @@ class EditProfile(forms.ModelForm):
 
 
 class AuthForm(forms.Form):
-    code = forms.IntegerField(label="Код регистрации")
+    code = forms.IntegerField(label="Registration code")
 
 
 class BasicSignupForm(SignupForm):

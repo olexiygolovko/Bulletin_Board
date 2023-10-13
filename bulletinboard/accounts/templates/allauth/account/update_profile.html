@@ -8,7 +8,6 @@
         {% block content %}
         <form method="post" action="{% url 'account_edit' %}">
         {% csrf_token %}
-
             <div style="margin: auto; width: 40%; border: 5px solid yellow; padding: 5px;">
                 <div align="center">
                     <p>{{ form.username.label_tag }}</p>
@@ -19,7 +18,7 @@
                     <p>{{ form.last_name }}</p>
                     <p>{{ form.first_name.label_tag }}</p>
                     <p>{{ form.first_name }}</p>
-                    <input type="submit" value="Сохранить">
+                    <input type="submit" value="Save">
                 </div>
             </div>
         </form>

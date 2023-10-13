@@ -10,9 +10,9 @@ class PostForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
-        self.fields['category'].label = "Категория:"
-        self.fields['title'].label = "Заголовок"
-        self.fields['text'].label = "Текст объявления:"
+        self.fields['category'].label = "Category:"
+        self.fields['title'].label = "Heading"
+        self.fields['text'].label = "Announcement text:"
 
 
 class RespondForm(forms.ModelForm):
@@ -22,15 +22,15 @@ class RespondForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(RespondForm, self).__init__(*args, **kwargs)
-        self.fields['text'].label = "Текст отклика:"
+        self.fields['text'].label = "Response text:"
 
 
 class ResponsesFilterForm(forms.Form):
     def __init__(self, user, *args, **kwargs):
         super(ResponsesFilterForm, self).__init__(*args, **kwargs)
         self.fields['title'] = forms.ModelChoiceField(
-            label='Объявление',
+            label='Announcement',
             queryset=Post.objects.filter(author_id=user.id).order_by('-dateCreation').values_list('title', flat=True),
-            empty_label="Все",
+            empty_label="All",
             required=False
         )

@@ -25,9 +25,9 @@ class PostItem(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if Response.objects.filter(author_id=self.request.user.id).filter(post_id=self.kwargs.get('pk')):
-            context['respond'] = "Откликнулся"
+            context['respond'] = "responded"
         elif self.request.user == Post.objects.get(pk=self.kwargs.get('pk')).author:
-            context['respond'] = "Мое_объявление"
+            context['respond'] = "My_ad"
         return context
 
 
@@ -63,7 +63,7 @@ class EditPost(PermissionRequiredMixin, UpdateView):
         if self.request.user.username == 'admin' or self.request.user.username == author:
             return super().dispatch(request, *args, **kwargs)
         else:
-            return HttpResponse("Редактировать объявление может только его автор")
+            return HttpResponse("Only its author can edit an ad.")
 
     def get_object(self, **kwargs):
         id = self.kwargs.get('pk')
@@ -85,7 +85,7 @@ class DeletePost(PermissionRequiredMixin, DeleteView):
         if self.request.user.username == 'admin' or self.request.user.username == author:
             return super().dispatch(request, *args, **kwargs)
         else:
-            return HttpResponse("Удалить объявление может только его автор")
+            return HttpResponse("Only its author can delete an ad.")
 
 
 title = str("")
@@ -100,8 +100,8 @@ class Responses(LoginRequiredMixin, ListView):
         context = super(Responses, self).get_context_data(**kwargs)
         global title
         """
-        Далее в условии - если пользователь попал на страницу через ссылку из письма, в которой содержится
-        ID поста для фильтра - фильтр работает по этому ID
+        Further in the condition - if the user got to the page through a link from the letter, which contains
+        Post ID for the filter - the filter works based on this ID
         """
         if self.kwargs.get('pk') and Post.objects.filter(id=self.kwargs.get('pk')).exists():
             title = str(Post.objects.get(id=self.kwargs.get('pk')).title)
@@ -121,8 +121,8 @@ class Responses(LoginRequiredMixin, ListView):
         global title
         title = self.request.POST.get('title')
         """
-        Далее в условии - При событии POST (если в пути открытой страницы есть ID) - нужно перезайти уже без этого ID
-        чтобы фильтр отрабатывал запрос уже из формы, так как ID, если он есть - приоритетный 
+        Further in the condition - At the POST event (if there is an ID in the path of the open page) - you need to re-enter without this ID
+         so that the filter processes the request already from the form, since the ID, if it exists, has priority
         """
         if self.kwargs.get('pk'):
             return HttpResponseRedirect('/responses')

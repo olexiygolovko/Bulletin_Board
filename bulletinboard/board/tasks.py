@@ -11,9 +11,9 @@ from .models import Post, Response
 def respond_send_email(respond_id):
     respond = Response.objects.get(id=respond_id)
     send_mail(
-        subject=f'MMORPG Billboard: новый отклик на объявление!',
-        message=f'Доброго дня, {respond.post.author}, ! На Ваше объявление есть новый отклик!\n'
-                f'Прочитать отклик:\nhttp://127.0.0.1:8000/responses/{respond.post.id}',
+        subject=f'MMORPG Billboard: new response to ad!',
+        message=f'Good day, {respond.post.author}, ! There is a new response to your ad!\n'
+                f'Read the response:\nhttp://127.0.0.1:8000/responses/{respond.post.id}',
         from_email='olexiygolovko92@mail.ru',
         recipient_list=[respond.post.author.email, ],
     )
@@ -24,9 +24,9 @@ def respond_accept_send_email(response_id):
     respond = Response.objects.get(id=response_id)
     print(respond.post.author.email)
     send_mail(
-        subject=f'MMORPG Billboard: Ваш отклик принят!',
-        message=f'Доброго дня, {respond.author}, Автор объявления {respond.post.title} принял Ваш отклик!\n'
-                f'Посмотреть принятые отклики:\nhttp://127.0.0.1:8000/responses',
+        subject=f'MMORPG Billboard: Your response has been accepted!',
+        message=f'Good day, {respond.author}, Author of the ad {respond.post.title} I accepted your response!\n'
+                f'View accepted responses:\nhttp://127.0.0.1:8000/responses',
         from_email='olexiygolovko92@mail.ru',
         recipient_list=[respond.post.author.email, ],
     )
@@ -43,9 +43,9 @@ def send_mail_monday_8am():
             for post in list_week_posts:
                 list_posts += f'\n{post.title}\nhttp://127.0.0.1:8000/post/{post.id}'
             send_mail(
-                subject=f'News Portal: посты за прошедшую неделю.',
-                message=f'Доброго дня, {user.username}!\nПредлагаем Вам ознакомиться с новыми объявлениями, '
-                        f'появившимися за последние 7 дней:\n{list_posts}',
+                subject=f'News Portal: posts from the past week.',
+                message=f'Good day, {user.username}!\nWe invite you to familiarize yourself with new advertisements,'
+                        f'appeared in the last 7 days:\n{list_posts}',
                 from_email='olexiygolovko92@mail.ru',
                 recipient_list=[user.email, ],
             )

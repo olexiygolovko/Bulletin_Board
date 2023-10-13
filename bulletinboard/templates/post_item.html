@@ -15,19 +15,19 @@
 
     <br><br>
 
-    <a class="btn btn-secondary" href="{% url 'index' %}" role="button">Закрыть</a>
-    <a class="btn btn-secondary" href="/post/{{ post.id }}/edit" role="button">Редактировать</a>
-    <a class="btn btn-secondary" href="/post/{{ post.id }}/delete" role="button">Удалить</a>
+    <a class="btn btn-secondary" href="{% url 'index' %}" role="button">Close</a>
+    <a class="btn btn-secondary" href="/post/{{ post.id }}/edit" role="button">Edit</a>
+    <a class="btn btn-secondary" href="/post/{{ post.id }}/delete" role="button">Delete</a>
 
     {% if user.is_authenticated %}
     <br><br>
-        {% if respond == "Откликнулся" %}
-            <a style="color:red">Вы откликнулись на это объявление.</a><br>
-            <a href="{% url 'responses' %}">Посмотреть свои отклики</a>
-        {% elif respond == "Мое_объявление" %}
-            <a style="color:red">Вы не можете откликнуться на свое объявление.</a><br>
+        {% if respond == "responded" %}
+            <a style="color:red">You have responded to this advertisement.</a><br>
+            <a href="{% url 'responses' %}">View your responses</a>
+        {% elif respond == "My_ad" %}
+            <a style="color:red">You cannot respond to your ad.</a><br>
         {% else %}
-            <a class="btn btn-secondary" href="/respond/{{ post.id }}" role="button">Откликнуться</a>
+            <a class="btn btn-secondary" href="/respond/{{ post.id }}" role="button">Reply</a>
         {% endif %}
     {% endif %}
     <br><br>

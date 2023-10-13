@@ -7,7 +7,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bulletinboard.settings')
 
 app = Celery('bulletinboard')
 app.config_from_object('django.conf:settings', namespace='CELERY')
-app.conf.timezone = 'Europe/Moscow'
+app.conf.timezone = 'Europe/Warsaw'
 app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'send_mail_monday_8am': {

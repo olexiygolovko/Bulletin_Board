@@ -14,14 +14,14 @@
     <h5>E-mail: {{user.email}}</h5>
 
     <br> <br>
-    <a class="btn btn-secondary" href="{% url 'account_edit' %}" role="button">Изменить данные</a>
+    <a class="btn btn-secondary" href="{% url 'account_edit' %}" role="button">To change the data</a>
     <br><br>
-    <a class="btn btn-secondary" href="{% url 'account_logout' %}" role="button">Выйти из аккаунта</a>
+    <a class="btn btn-secondary" href="{% url 'account_logout' %}" role="button">Log out</a>
 
     <br><br><br>
     {% if auth == False %}
-        <h5>Для завершения регистрации, введите код подтверждения,<br>
-            высланный на указанную Вами электронную почту:</h5><br>
+        <h5>To complete registration, enter the confirmation code,<br>
+            sent to the email you provided:</h5><br>
         <form method="POST">
             {% csrf_token %}
             {{ form }}
@@ -29,11 +29,11 @@
         </form>
         {% if code_not_correct %}
             <a style="font-size: 16px; color:red">{{ code_not_correct }}</a><br>
-            <a href="{% url 'auth_code' %}" style="font-size: 16px; color:blue">Выслать новый код</a>
+            <a href="{% url 'auth_code' %}" style="font-size: 16px; color:blue">Send new code</a>
         {% endif %}
     {% else %}
-        <h5>Ваша электронная почта подтверждена</h5>
-        <a>Вы можете размещать новые объявления и делать отклики</a><br>
+        <h5>Your email has been confirmed</h5>
+        <a>You can post new advertisements and make responses</a><br>
     {% endif %}
 
 {% endblock %}

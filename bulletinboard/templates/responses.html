@@ -4,76 +4,76 @@
 
 {% block content %}
     <br>
-    <h3>Фильтр откликов на мои объявления:</h3><br>
+    <h3>Filter responses to my ads:</h3><br>
 	<form method="POST">
 		{% csrf_token %}
         {{ form }}
 		<input class="btn btn-secondary" type="submit" value="Показать">
 	</form><br>
     {% if title %}
-        <h3>Oтклики на мое объявление</h3>
+        <h3>Responses to my ad</h3>
         <a href="/post/{{ response_post_id }}" style="font-size: 20px;"><b>{{ title }}:</b></a><br>
         {% if filter_responses %}
             {% for response in filter_responses %}
-                <a><b>Отклик: </b></a>{{ response.text }}<br>
-                <span style="font-size: 12px;"><b>Автор отклика: {{ response.author.username }} |
-                    дата публикации отклика: {{ response.dateCreation|date:'d.M.Y' }} г.</b></span><br>
+                <a><b>Response: </b></a>{{ response.text }}<br>
+                <span style="font-size: 12px;"><b>Author of the response: {{ response.author.username }} |
+                    response publication date: {{ response.dateCreation|date:'d.M.Y' }} г.</b></span><br>
                 {% if response.status == False %}
-                    <a href="/response/accept/{{ response.id }}" style="font-size: 12px; color:green"><b>принять</b></a>
+                    <a href="/response/accept/{{ response.id }}" style="font-size: 12px; color:green"><b>accept</b></a>
                     <a>&nbsp;&nbsp;&nbsp;</a>
-                    <a href="/response/delete/{{ response.id }}" style="font-size: 12px; color:red"><b>удалить</b></a>
+                    <a href="/response/delete/{{ response.id }}" style="font-size: 12px; color:red"><b>delete</b></a>
                 {% else %}
-                    <a style="font-size: 14px; color:green"><b>отклик принят</b></a>
+                    <a style="font-size: 14px; color:green"><b>response accepted</b></a>
                 {% endif %}
                 <br><br>
             {% endfor %}
         {% else %}
             <br>
-            <h5>Откликов нет!</h5>
+            <h5>No replies!</h5>
         {% endif %}
     {% else %}
-        <h3>Oтклики на все мои объявления:</h3>
+        <h3>Responses to all my advertisements:</h3>
         {% if filter_responses %}
             {% for response in filter_responses %}
-                <a><b>Объявление:</b></a>
+                <a><b>Announcement:</b></a>
                 <a href="/post/{{ response.post_id }}" style="font-size: 20px;"><b>{{ response.post.title }}</b></a><br>
-                <span style="font-size: 12px;"><b>Дата публикации объявления: {{ response.post.dateCreation|date:'d.M.Y' }} г.</b>
+                <span style="font-size: 12px;"><b>Announcement date: {{ response.post.dateCreation|date:'d.M.Y' }} г.</b>
                 </span><br>
-                <a><b>Отклик: </b></a>{{ response.text }}<br>
-                <span style="font-size: 12px;"><b>Автор отклика: {{ response.author.username }} |
-                    дата публикации отклика: {{ response.dateCreation|date:'d.M.Y' }} г.</b></span><br>
+                <a><b>Response: </b></a>{{ response.text }}<br>
+                <span style="font-size: 12px;"><b>Author of the response:{{ response.author.username }} |
+                    response publication date: {{ response.dateCreation|date:'d.M.Y' }} г.</b></span><br>
                 {% if response.status == False %}
-                    <a href="/response/accept/{{ response.id }}" style="font-size: 12px; color:green"><b>принять</b></a>
+                    <a href="/response/accept/{{ response.id }}" style="font-size: 12px; color:green"><b>accept</b></a>
                     <a>&nbsp;&nbsp;&nbsp;</a>
-                    <a href="/response/delete/{{ response.id }}" style="font-size: 12px; color:red"><b>удалить</b></a>
+                    <a href="/response/delete/{{ response.id }}" style="font-size: 12px; color:red"><b>delete</b></a>
                 {% else %}
-                    <a style="font-size: 14px; color:green"><b>отклик принят</b></a>
+                    <a style="font-size: 14px; color:green"><b>response accepted</b></a>
                 {% endif %}
                 <br><br>
             {% endfor %}
         {% else %}
-            <h5>Откликов нет!</h5>
+            <h5>No replies!</h5>
         {% endif %}
     {% endif %}
     <br><br>
-    <h3>Мои отклики на объявления:</h3>
+    <h3>My responses to advertisements:</h3>
     {% if myresponses %}
         {% for response in myresponses %}
-            <a><b>Объявление:</b></a>
+            <a><b>Announcement:</b></a>
             <a href="/post/{{ response.post_id }}" style="font-size: 20px;"><b>{{ response.post.title }}</b></a><br>
-            <span style="font-size: 12px;"><b>Автор объявления:  {{ response.post.author.username }} |
-                дата публикации объявления: {{ response.post.dateCreation|date:'d.M.Y' }} г.</b></span><br>
-            <a><b>Мой отклик:</b></a>
+            <span style="font-size: 12px;"><b>Author of the ad: {{ response.post.author.username }} |
+                advertisement publication date: {{ response.post.dateCreation|date:'d.M.Y' }} г.</b></span><br>
+            <a><b>My response:</b></a>
             {{ response.text }}<br>
-            <span style="font-size: 12px;"><b>Дата публикации отклика: {{ response.dateCreation|date:'d.M.Y' }} г.</b></span><br>
+            <span style="font-size: 12px;"><b>Response publication date: {{ response.dateCreation|date:'d.M.Y' }} г.</b></span><br>
             {% if response.status == True %}
-                <a style="font-size: 14px; color:green"><b>Автор объявления принял отклик!</b></a>
+                <a style="font-size: 14px; color:green"><b>The author of the ad accepted the response!</b></a>
             {% else %}
-                <a style="font-size: 14px; color:red"><b>Автор объявления пока не принял отклик!</b></a>
+                <a style="font-size: 14px; color:red"><b>The author of the ad has not yet accepted the response!</b></a>
             {% endif %}
         <br><br>
         {% endfor %}
     {% else %}
-        <h5>Откликов нет!</h5>
+        <h5>No replies!</h5>
     {% endif %}
 {% endblock content %}

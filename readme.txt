@@ -1,19 +1,19 @@
-Задача:
-Нам необходимо разработать интернет-ресурс для фанатского сервера одной известной
-MMORPG — что-то вроде доски объявлений. Пользователи нашего ресурса должны иметь возможность
-зарегистрироваться в нём по e-mail, получив письмо с кодом подтверждения регистрации.
-После регистрации им становится доступно создание и редактирование объявлений.
-Объявления состоят из заголовка и текста, внутри которого могут быть картинки, встроенные видео и другой контент.
-Пользователи могут отправлять отклики на объявления других пользователей, состоящие из простого текста.
-При отправке отклика пользователь должен получить e-mail с оповещением о нём.
-Также пользователю должна быть доступна приватная страница с откликами на его объявления, внутри которой он
-может фильтровать отклики по объявлениям, удалять их и принимать (при принятии отклика пользователю,
-оставившему отклик, также должно прийти уведомление). Кроме того, пользователь обязательно должен определить
-объявление в одну из следующих категорий: Танки, Хилы, ДД, Торговцы, Гилдмастеры, Квестгиверы, Кузнецы, Кожевники,
-Зельевары, Мастера заклинаний.
+Task:
+We need to develop an Internet resource for a fan server of one famous
+MMORPG is something like a bulletin board. Users of our resource should be able to
+register in it by e-mail, receiving a letter with a registration confirmation code.
+After registration, they can create and edit advertisements.
+Ads consist of a title and text, which may contain images, embedded videos and other content.
+Users can post plain text responses to other users' advertisements.
+When sending a response, the user should receive an e-mail notifying about it.
+The user should also have access to a private page with responses to his ads, inside which he
+can filter responses by ads, delete them and accept them (when accepting a response to a user,
+the person who left the response should also receive a notification). In addition, the user must define
+advertisement in one of the following categories: Tanks, Healers, DD, Merchants, Guildmasters, Questgivers, Blacksmiths, Tanners,
+Potions masters, spell masters.
 
-Также мы бы хотели иметь возможность отправлять пользователям новостные рассылки.
+We would also like to be able to send newsletters to users.
 
 
-Работа Celery | Redis настраиваем через Docker
-Сelery запускаем коммандой - celery -A bulletinboard worker -l INFO
+Job Celery | Setting up Redis via Docker
+Launch Celery with the command - celery -A bulletinboard worker -l INFO

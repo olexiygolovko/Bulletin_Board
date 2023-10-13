@@ -28,7 +28,7 @@ class AccountProfile(LoginRequiredMixin, FormView):
         if form.cleaned_data['code'] == UsersAuth.objects.get(user=self.request.user).code:
             Group.objects.get(name='AuthUsers').user_set.add(self.request.user)
         else:
-            code_not_correct = "Введен неверный код подтверждения"
+            code_not_correct = "Invalid verification code entered"
         return HttpResponseRedirect(reverse('account_profile'))
 
     def get_context_data(self, **kwargs):
@@ -55,9 +55,9 @@ def auth_code(request):
     user.code = random.randint(1000, 9999)
     user.save()
     send_mail(
-        subject=f'Bulletin board: подтверждение e-mail',
-        message=f'Доброго дня, {request.user}! Для подтверждения регистрации, введите код {user.code} на '
-                f'странице регистрации\nhttp://127.0.0.1:8000/accounts/profile',
+        subject=f'Bulletin board: confirmation e-mail',
+        message=f'Good day, {request.user}! To confirm registration, enter the code {user.code} on '
+                f'registration page\nhttp://127.0.0.1:8000/accounts/profile',
         from_email='olexiygolovko92@mail.ru',
         recipient_list=[request.user.email, ],
     )
